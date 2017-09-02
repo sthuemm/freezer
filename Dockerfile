@@ -1,4 +1,4 @@
-FROM java:8 
+FROM hypriot/rpi-java
 EXPOSE 8080
 VOLUME /tmp 
 ADD /target/freezer-0.0.1-SNAPSHOT.jar freezer.jar
