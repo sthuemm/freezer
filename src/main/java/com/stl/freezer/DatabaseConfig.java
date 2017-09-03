@@ -22,7 +22,7 @@ public class DatabaseConfig {
     public DataSource dataSource() {
         BasicDataSource dataSource = new BasicDataSource();
         dataSource.setDriverClassName("com.mysql.jdbc.Driver");
-        dataSource.setUrl("jdbc:mysql://raspberrypi.local:3306/freezer");
+        dataSource.setUrl("jdbc:mysql://localhost:3306/freezer");
         System.out.println("User: " +System.getenv("dbuser") +" : "+ System.getenv("dbpassword"));
         dataSource.setUsername(System.getenv("dbuser"));
         dataSource.setPassword(System.getenv("dbpassword"));
