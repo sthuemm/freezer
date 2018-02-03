@@ -1,7 +1,8 @@
-package com.stl.freezer.product.controller;
+package com.stl.freezer.productmanagement.controller;
 
 
-import com.stl.freezer.product.repository.ProductRepository;
+import com.stl.freezer.productmanagement.model.Product;
+import com.stl.freezer.productmanagement.repository.ProductRepository;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -30,7 +31,7 @@ public class ProductController {
     }
 
     @GetMapping(path = "/add")
-    public ResponseEntity<?> addNewProduct(){
+    public ResponseEntity<?> addNewProduct(Product product){
 
         //TODO implement
 

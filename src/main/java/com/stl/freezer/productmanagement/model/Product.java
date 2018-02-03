@@ -1,4 +1,4 @@
-package com.stl.freezer.product.model;
+package com.stl.freezer.productmanagement.model;
 
 import lombok.Getter;
 import lombok.Setter;
