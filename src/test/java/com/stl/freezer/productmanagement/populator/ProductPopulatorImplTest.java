@@ -10,6 +10,7 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import javax.annotation.Resource;
@@ -17,6 +18,7 @@ import javax.annotation.Resource;
 @RunWith(SpringRunner.class)
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT, classes = FreezerApplication.class)
 @AutoConfigureMockMvc
+@ActiveProfiles("Test")
 public class ProductPopulatorImplTest {
 
     @Resource
@@ -38,11 +40,17 @@ public class ProductPopulatorImplTest {
     }
 
     @Test
-    public void convert() throws Exception {
-        ProductDto productDto = productPopulator.convert(product);
+    public void convertToProductDto() throws Exception {
+        ProductDto productDto = productPopulator.convertToDto(product);
         Assert.assertTrue(product.getName().equals(productDto.getName()));
         Assert.assertTrue(product.getId().equals(productDto.getId()));
         Assert.assertTrue(product.getQuantity() == productDto.getQuantity());
+    }
+
+    @Test
+    public void testForNull(){
+        ProductDto productDto = productPopulator.convertToDto(null);
+        Assert.assertNull(productDto);
     }
 
 }

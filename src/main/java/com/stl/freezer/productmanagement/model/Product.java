@@ -1,5 +1,6 @@
 package com.stl.freezer.productmanagement.model;
 
+import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -15,6 +16,7 @@ import javax.persistence.Id;
 @Entity
 @Getter
 @Setter
+@AllArgsConstructor
 public class Product {
 
     @Id
@@ -24,5 +26,9 @@ public class Product {
     private String name;
 
     private int quantity;
+
+    public Product(){
+        //default constructor
+    }
 
 }

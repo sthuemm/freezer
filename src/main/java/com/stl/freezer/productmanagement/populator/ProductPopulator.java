@@ -5,6 +5,7 @@ import com.stl.freezer.productmanagement.model.ProductDto;
 
 public interface ProductPopulator {
 
-    ProductDto convert(Product product);
+    ProductDto convertToDto(Product product);
+    Product convertToEntity(ProductDto productDto);
 
 }

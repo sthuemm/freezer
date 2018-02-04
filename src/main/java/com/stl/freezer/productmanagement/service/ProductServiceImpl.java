@@ -4,16 +4,23 @@ import com.stl.freezer.productmanagement.model.Product;
 import com.stl.freezer.productmanagement.model.ProductDto;
 import com.stl.freezer.productmanagement.populator.ProductPopulator;
 import com.stl.freezer.productmanagement.repository.ProductRepository;
+import com.sun.istack.internal.Nullable;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
 @Service
+@Slf4j
 public class ProductServiceImpl implements ProductService {
+
+    private final String TAG = this.getClass().getSimpleName();
 
     final private ProductRepository productRepository;
 
     final private ProductPopulator productPopulator;
+
+
 
     ProductServiceImpl(ProductRepository productRepository, ProductPopulator productPopulator){
         this.productRepository = productRepository;
@@ -21,13 +28,18 @@ public class ProductServiceImpl implements ProductService {
     }
 
     @Override
-    public ProductDto saveProduct(Product product) {
-        return productPopulator.convert(productRepository.save(product));
+    @Nullable
+    public ProductDto saveProduct(@Nullable Product product) {
+        if(product == null){
+            log.error(TAG + ": product must not be null");
+            return null;
+        }
+        return productPopulator.convertToDto(productRepository.save(product));
     }
 
     @Override
     public ProductDto getProduct(long id) {
-        return productPopulator.convert(productRepository.findOne(id));
+        return productPopulator.convertToDto(productRepository.findOne(id));
     }
 
     @Override

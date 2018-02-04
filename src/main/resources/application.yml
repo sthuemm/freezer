@@ -13,3 +13,15 @@ spring:
     continue-on-error: true
   error:
     path: /error
+
+---
+spring:
+  profiles: Test
+  jpa:
+    database: H2
+    hibernate:
+        ddl-auto: create-drop
+  datasource:
+    url: jdbc:h2:mem:test;DB_CLOSE_ON_EXIT=FALSE
+    driver-class-name: org.h2.Driver
+
