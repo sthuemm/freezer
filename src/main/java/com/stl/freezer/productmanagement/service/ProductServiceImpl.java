@@ -4,10 +4,10 @@ import com.stl.freezer.productmanagement.model.Product;
 import com.stl.freezer.productmanagement.model.ProductDto;
 import com.stl.freezer.productmanagement.populator.ProductPopulator;
 import com.stl.freezer.productmanagement.repository.ProductRepository;
-import com.sun.istack.internal.Nullable;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
+import javax.annotation.Nullable;
 import java.util.List;
 
 @Service

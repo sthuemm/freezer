@@ -5,13 +5,14 @@ import com.stl.freezer.productmanagement.model.Product;
 import com.stl.freezer.productmanagement.model.ProductDto;
 
 
-import com.sun.istack.internal.Nullable;
+
 import lombok.extern.slf4j.Slf4j;
 import org.modelmapper.ModelMapper;
 
 import org.springframework.stereotype.Service;
 
 
+import javax.annotation.Nullable;
 import javax.annotation.Resource;
 
 
