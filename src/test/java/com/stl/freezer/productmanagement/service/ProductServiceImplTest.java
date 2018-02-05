@@ -2,6 +2,8 @@ package com.stl.freezer.productmanagement.service;
 
 import com.stl.freezer.FreezerApplication;
 import com.stl.freezer.productmanagement.model.Product;
+import com.stl.freezer.productmanagement.model.ProductDto;
+import com.stl.freezer.productmanagement.populator.ProductPopulator;
 import com.stl.freezer.productmanagement.repository.ProductRepository;
 import org.junit.After;
 import org.junit.Before;
@@ -33,6 +35,11 @@ public class ProductServiceImplTest {
     @InjectMocks
     private ProductServiceImpl productService;
 
+    @Mock
+    private ProductPopulator productPopulator;
+
+    private Product product;
+
     @Before
     public void setUp() throws Exception {
         List<Product> products = new ArrayList<>();
@@ -41,6 +48,11 @@ public class ProductServiceImplTest {
         products.add(new Product(2L, "product3", 4));
         products.add(new Product(3L, "product4", 4));
         when(productRepository.findAll()).thenReturn(products);
+
+        product = new Product(0L, "product5", 1);
+        when(productRepository.save(product)).thenReturn(product);
+        when(productPopulator.convertToDto(product)).thenReturn(new ProductDto(product.getId(), product.getName(), product.getQuantity()));
+        when(productRepository.findOne(0L)).thenReturn(product);
     }
 
     @After
@@ -50,12 +62,18 @@ public class ProductServiceImplTest {
 
     @Test
     public void saveProduct() throws Exception {
-        //TODO implement
+        ProductDto productDto = productService.saveProduct(product);
+        Assert.notNull(productDto);
+        Assert.isTrue(productDto.getId().equals(product.getId()));
+        Assert.isTrue(productDto.getName().equals(product.getName()));
+        Assert.isTrue(productDto.getQuantity() == product.getQuantity());
     }
 
     @Test
     public void getProduct() throws Exception {
-        //TODO implement
+        ProductDto productDto = productService.getProduct(0L);
+        Assert.notNull(productDto);
+        Assert.isTrue(productDto.getId().equals(0L));
     }
 
     @Test

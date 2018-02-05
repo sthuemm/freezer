@@ -21,11 +21,11 @@ public class ProductServiceImpl implements ProductService {
     final private ProductPopulator productPopulator;
 
 
-
     ProductServiceImpl(ProductRepository productRepository, ProductPopulator productPopulator){
         this.productRepository = productRepository;
         this.productPopulator = productPopulator;
     }
+
 
     @Override
     @Nullable
@@ -34,7 +34,8 @@ public class ProductServiceImpl implements ProductService {
             log.error(TAG + ": product must not be null");
             return null;
         }
-        return productPopulator.convertToDto(productRepository.save(product));
+        Product persistedProduct = productRepository.save(product);
+        return productPopulator.convertToDto(persistedProduct);
     }
 
     @Override
