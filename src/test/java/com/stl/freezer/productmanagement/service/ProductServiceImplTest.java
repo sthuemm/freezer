@@ -70,6 +70,12 @@ public class ProductServiceImplTest {
     }
 
     @Test
+    public void saveNullProduct() throws Exception {
+        ProductDto productDto = productService.saveProduct(null);
+        Assert.isNull(productDto);
+    }
+
+    @Test
     public void getProduct() throws Exception {
         ProductDto productDto = productService.getProduct(0L);
         Assert.notNull(productDto);

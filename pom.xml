@@ -145,7 +145,7 @@
 				</executions>
 				<configuration>
 					<excludes>
-						<exclude>**/*FreezerApplication</exclude>
+						<exclude>**/FreezerApplication.java</exclude>
 					</excludes>
 				</configuration>
 			</plugin>
