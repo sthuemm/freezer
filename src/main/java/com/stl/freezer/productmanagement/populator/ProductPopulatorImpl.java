@@ -36,7 +36,12 @@ public class ProductPopulatorImpl implements ProductPopulator {
     }
 
     @Override
-    public Product convertToEntity(ProductDto productDto) {
+    @Nullable
+    public Product convertToEntity(@Nullable ProductDto productDto) {
+        if(productDto == null){
+            log.error(TAG+": productDto must not be null");
+            return null;
+        }
         return modelMapper.map(productDto, Product.class);
     }
 

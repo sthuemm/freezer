@@ -143,6 +143,11 @@
 						</goals>
 					</execution>
 				</executions>
+				<configuration>
+					<excludes>
+						<exclude>**/*FreezerApplication</exclude>
+					</excludes>
+				</configuration>
 			</plugin>
 		</plugins>
 	</build>

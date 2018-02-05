@@ -48,9 +48,24 @@ public class ProductPopulatorImplTest {
     }
 
     @Test
-    public void testForNull(){
+    public void testForNullConversionToDto(){
         ProductDto productDto = productPopulator.convertToDto(null);
         Assert.assertNull(productDto);
+    }
+
+    @Test
+    public void convertToProduct() throws Exception {
+        Product product = productPopulator.convertToEntity(new ProductDto(1L, "testProductDto", 1));
+        Assert.assertNotNull(product);
+        Assert.assertTrue(product.getQuantity() == 1);
+        Assert.assertTrue(product.getId().equals(1L));
+        Assert.assertTrue(product.getName().equals("testProductDto"));
+    }
+
+    @Test
+    public void testForNullConversionToEntity(){
+        Product product = productPopulator.convertToEntity(null);
+        Assert.assertNull(product);
     }
 
 }
