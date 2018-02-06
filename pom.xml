@@ -118,6 +118,7 @@
 			<plugin>
 				<groupId>org.eluder.coveralls</groupId>
 				<artifactId>coveralls-maven-plugin</artifactId>
+
 				<version>4.3.0</version>
 			</plugin>
 			<plugin>
@@ -143,11 +144,11 @@
 						</goals>
 					</execution>
 				</executions>
-				<configuration>
-					<excludes>
-						<exclude>**/FreezerApplication.java</exclude>
-					</excludes>
-				</configuration>
+				<!--<configuration>-->
+					<!--<excludes>-->
+						<!--<exclude>**/*FreezerApplication*</exclude>-->
+					<!--</excludes>-->
+				<!--</configuration>-->
 			</plugin>
 		</plugins>
 	</build>
